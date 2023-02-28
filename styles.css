@@ -1,0 +1,425 @@
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --Marine-blue: hsl(213, 96%, 18%);
+    --Purplish-blue: hsl(243, 100%, 62%);
+    --Pastel-blue: hsl(228, 100%, 84%);
+    --Light-blue: hsl(206, 94%, 87%);
+    --Strawberry-red: hsl(354, 84%, 57%);
+
+    /* ### Neutral */
+
+    --Cool-gray: hsl(231, 11%, 63%);
+    --Light-gray: hsl(229, 24%, 87%);
+    --Magnolia: hsl(217, 100%, 97%);
+    --Alabaster: hsl(231, 100%, 99%);
+    --White: hsl(0, 0%, 100%);
+}
+
+.f-blue {
+    color: var(--Marine-blue);
+}
+
+@font-face {
+    font-family: ubuntu-b;
+    src: url('./assets/fonts/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+    font-family: ubuntu-m;
+    src: url('./assets/fonts/Ubuntu-Medium.ttf');
+}
+
+@font-face {
+    font-family: ubuntu-r;
+    src: url('./assets/fonts/Ubuntu-Regular.ttf');
+}
+
+body,
+ul,
+p,
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+input,
+label {
+    font: inherit;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+body {
+    font-family: ubuntu-r;
+    line-height: 1.5;
+    min-height: 100vh;
+    color: var(--Cool-gray);
+    background-color: var(--Magnolia);
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 1.8;
+    font-family: ubuntu-b;
+    color: var(--Marine-blue);
+}
+
+main {
+    display: grid;
+    width: min(58.5rem, 100%);
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    background-image: url('./assets/images/bg-sidebar-mobile.svg');
+    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+
+form input {
+    padding: .5em 1em;
+    border: 1px solid var(--Light-gray);
+    border-radius: .3rem;
+    margin-top: .3em;
+}
+
+/* -------------- -------------- ------------ */
+/* -------------- Step Indicator ------------ */
+/* -------------- -------------- ------------ */
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    color: var(--White);
+    padding: 2rem 2rem 1.5rem;
+    margin-inline: auto;
+    border-radius: .8rem;
+    background-color: transparent;
+}
+
+.step-indicator p:first-child {
+    grid-area: 1 / 1 / -1 / 2;
+
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--Light-gray);
+}
+
+.step-indicator p:not(:first-child) {
+    display: none;
+    text-transform: uppercase;
+}
+
+.step-indicator p:nth-child(2) {
+    color: var(--Pastel-blue);
+    font-size: .8rem;
+    line-height: 1.2;
+}
+
+.step-indicator p:last-child {
+    font-weight: 500;
+}
+
+.step-indicator.active :first-child {
+    background-color: var(--Light-blue);
+    color: var(--Marine-blue);
+}
+
+/* ----------- ------------------ ------------ */
+/* ----------- sections and forms ------------ */
+/* ----------- ------------------ ------------ */
+
+form,
+section:not(.steps) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.container {
+    border-radius: .5em;
+    width: min(90%, 450px);
+    padding: 1.3rem 1.3rem 2rem;
+    background-color: var(--White);
+}
+
+.container>p {
+    max-width: 35ch;
+}
+
+.container-buttons {
+    display: flex;
+    width: 100%;
+    border-radius: 0;
+    margin-top: auto;
+    padding: 1.3rem;
+}
+
+/* --------- ---------------- ----------  */
+/* --------- Avilable Options ----------  */
+/* --------- ---------------- ----------  */
+
+.options-wrapper {
+    display: grid;
+    gap: 1rem;
+    margin-block: 2.5rem;
+}
+
+.option {
+    display: grid;
+    gap: .5rem;
+    /* flex-direction: row-reverse; */
+    /* Woaw SO if flex is reverse the flex-start and flex-end also get reversed */
+    /* justify-content: start; */
+}
+
+.option span:first-of-type {
+    font-weight: 600;
+    color: var(--Marine-blue);
+}
+
+.option label {
+    display: flex;
+    flex-direction: column;
+}
+/* --------- User Info ------------- */
+
+.user-info label {color: var(--Marine-blue);}
+
+/* ----------- Plans --------------- */
+
+.plans .option {
+    grid-template-columns: 2rem 1fr;
+    align-items: center;
+    gap: 0;
+    padding: 1rem;
+    border: 1px solid var(--Light-gray);
+    border-radius: .4rem;
+}
+
+/* ---------- Add Ons -------------- */
+
+.add-ons {
+    margin-bottom: 0;
+}
+
+.add-ons .option {
+    gap: 0;
+}
+
+.add-ons .option>* {
+    grid-area: 1 / 1 / 3 / 2;
+}
+
+.add-ons div {
+    display: grid;
+    padding: 1rem 1rem 1rem 4rem;
+    border: 1px solid var(--Light-gray);
+    border-radius: .4rem;
+}
+
+.add-ons input {
+    width: 1rem;
+    margin-left: 1.7rem;
+    aspect-ratio: 1;
+    justify-self: start;
+    align-self: center;
+}
+
+@media (min-width:45rem) {
+    .plans {
+        grid-auto-flow: column;
+    }
+
+    .plans .option {
+        grid-template-columns: auto;
+        grid-auto-flow: row;
+        gap: 2rem;
+        padding: 1rem;
+        border: 1px solid var(--Light-gray);
+        border-radius: .4rem;
+    }
+}
+
+
+/* -------- ----------- ----------- */
+/* -------- Buttons styles ----------- */
+/* -------- ----------- ----------- */
+
+.container-buttons button {
+    display: flex;
+    border: transparent;
+    border-radius: .6rem;
+}
+
+.back {
+    color: var(--Cool-gray);
+    padding-block: .5em;
+    padding-inline: 0;
+    background-color: transparent;
+}
+
+.next {
+    margin-left: auto;
+    padding: .7em 1.6em;
+    color: var(--White);
+    background-color: var(--Marine-blue);
+}
+
+.none {
+    display: none !important;
+}
+
+.plan-type input {
+    border: none;
+    position: relative;
+    appearance: none;
+    margin: 0;
+}
+
+.plan-type input#monthly::after,
+input#yearly::after
+
+/* .toggle-plan-type :is(input#monthly::after,input#yearly::after) */
+    {
+    content: '';
+    background-color: rebeccapurple;
+    position: absolute;
+    width: 1.6rem;
+}
+
+input#monthly::after {
+    inset: 0 -5px 0 auto;
+    border-radius: 50% 0 0 50%;
+}
+
+input#yearly::after {
+    inset: 0 0 0 -5px;
+    border-radius: 0 50% 50% 0;
+}
+
+/* ------------------------------------ */
+/* type changer ---------------------- */
+/* ------------------------------------ */
+
+.plan-type {
+    background-color: var(--Magnolia);
+    padding: .7em;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+}
+
+.plan-type :last-child {
+    grid-column: 3;
+}
+
+.success {
+    padding-block: 3rem;
+    text-align: center;
+}
+
+/* --------- ------ ----------- */
+/* --------- Slider ----------- */
+/* --------- ------ ----------- */
+
+@media (min-width:45rem) {
+    body {
+        display: grid;
+        place-items: center;
+        grid-template-rows: 1fr auto;
+    }
+
+    main {
+        min-height: auto;
+        grid-template-rows: auto;
+        grid-template-columns: minmax(auto, 17.5rem) minmax(60%, 40rem);
+        padding: 1rem;
+        border-radius: .8rem;
+        width: min(60rem, 90%);
+        height: min(50rem,80%);
+        background: none;
+        background-color: var(--White);
+    }
+
+    .container {
+        width: min(450px, 90%);
+        padding: 0;
+    }
+
+    form,
+    section:not(.steps) {
+        padding-top: 2rem;
+    }
+
+    .steps {
+        gap: 2rem;
+        flex-direction: column;
+        justify-content: start;
+        
+        margin-inline: 0;
+        padding: 2.3rem 2rem;
+        background-image: url('/assets/images/bg-sidebar-desktop.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .step-indicator p:not(:first-child) {
+        display: block;
+    }
+
+    .step-indicator {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+        column-gap: 1rem;
+        align-items: center;
+    }
+
+    .selection-wrapper {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        justify-content: space-between;
+        margin-block: 2rem;
+    }
+
+    .container>p {max-width: 100%;}
+}

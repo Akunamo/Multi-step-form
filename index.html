@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Frontend Mentor | Multi-step form</title>
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <section class="steps">
+      <div class="step-indicator active">
+        <p>1</p>
+        <p>Step 1</p>
+        <p>Your info</p>
+      </div>
+      <div class="step-indicator">
+        <p>2</p>
+        <p>Step 2</p>
+        <p>Select Plan</p>
+      </div>
+      <div class="step-indicator">
+        <p>3</p>
+        <p>Step 3</p>
+        <p>Add ons</p>
+      </div>
+      <div class="step-indicator">
+        <p>4</p>
+        <p>Step 4</p>
+        <p>Summary</p>
+      </div>
+    </section>
+    <form action="">
+      <div class="flow container">
+
+        <h2>Personal info</h2>
+        <p>Please provide your name, email address, and phone number.</p>
+        <div class="options-wrapper user-info">
+          <div class="option">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="e.g. Stephen Vikram">
+          </div>
+          <div class="option">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="e.g. A_Viral@Gmail.com">
+          </div>
+          <div class="option">
+            <label for="phone">Phone</label>
+            <input id="email" type="email" placeholder="e.g. +91 234 567 890">
+          </div>
+        </div>
+      </div>
+      <div class="container container-buttons">
+        <button class="next" type="button">Next Step</button>
+      </div>
+    </form>
+    <!-- PLANS SECTION -->
+    <form class="none" action="">
+      <div class="container">
+        <h2>Select your plan</h2>
+        <p>You have the option of monthly or yearly billing.</p>
+
+        <div class="plans options-wrapper">
+            <label class="option" for="arcade">
+              <img src="/assets/images/icon-arcade.svg" width="40" height="40" alt="">
+              <span>Arcade</span>
+              <span>$9/mo</span>
+            </label>
+            <input class="sr-only" id="arcade" type="radio" name="plan">
+
+            <label class="option" for="advanced">
+              <img src="/assets/images/icon-advanced.svg" width="40" height="40" alt="">
+              <span>Advanced</span>
+              <span>$12/mo</span>
+            </label>
+            <input class="sr-only" id="advanced" type="radio" name="plan">
+
+            <label class="option" for="Pro">
+              <img src="/assets/images/icon-pro.svg" width="40" height="40" alt="">
+              <span>Pro</span>
+              <span>$15/mo</span>
+            </label>
+            <input class="sr-only" id="pro" type="radio" name="plan">
+        </div>
+
+        <div class="plan-type">
+          <label for="monthly">Monthly</label>
+          <input id="monthly" type="radio" name="type">
+          <label for="yearly">Yearly</label>
+          <input id="yearly" type="radio" name="type">
+        </div>
+      </div>
+      <div class="container container-buttons">
+        <button class="back" type="button">Go back</button>
+        <button class="next" type="button">Next Step</button>
+      </div>
+
+    </form>
+    <!-- ADD ONES SECTION -->
+    <form class="none" action="">
+      <div class="flow container">
+        <h2>Pick add-ons</h2>
+        <p>Add-ons help enhance your gaming experience.</p>
+
+        <div class="add-ons options-wrapper">
+          <label class="option" for="online_service">
+            <input id="online_service" type="checkbox" name="add-on">
+            <div>
+              <span>Online service</span>
+              <span>Access to multiplayer games</span>
+            </div>
+          </label>
+
+          <label class="option" for="large_storage">
+            <input id="large_storage" type="checkbox" name="add-on">
+            <div>
+              <span>Larger storage</span>
+              <span>Extra 1TB of cloud save</span>
+            </div>
+          </label>
+
+          <label class="option" for="custom_profile">
+            <input id="custom_profile" type="checkbox" name="add-on">
+            <div>
+              <span>Customizable Profile</span>
+              <span>Custom theme on your profile</span>
+            </div>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="container container-buttons">
+        <button class="back" type="button">Go back</button>
+        <button class="next" type="button">Next Step</button>
+      </div>
+    </form>
+    <!-- FINALIZATION -->
+    <section class="none verify">
+      <div class="container">
+
+        <h2>Finishing up</h2>
+        <p>Double-check everything looks OK before confirming.</p>
+        <div>
+          <p class="purchase purchase-plan">Acrade (Monthly) <a>Change</a><span data-plan>arcade</span></p>
+          <p class="purchase">Online service<span>+$1/mo</span></p>
+          <p class="purchase">Larger storage<span>+$2/mo</span></p>
+        </div>
+        <p class="total">
+          <span class="type"></span>
+          <span class="total-price"></span>
+        </p>
+      </div>
+      <div class="container container-buttons">
+        <button class="back">Go back</button>
+        <button class="next">Next Step</button>
+      </div>
+    </section>
+    <!-- Dynamically add subscription and add-on selections here -->
+    <section class="success container none">
+      <img src="/assets/images/icon-thank-you.svg" alt="">
+      <h2>Thank you!</h2>
+      <p>Thanks for confirming your subscription! We hope youn
+        using our platform. If you ever need support, please feel free
+        to email us at support@loremgaming.com.</p>
+    </section>
+  </main>
+
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </footer>
+</body>
+
+</html>
