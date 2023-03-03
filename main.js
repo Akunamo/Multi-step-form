@@ -61,26 +61,26 @@ function isFormValidation(section) {
     return true;
 }
 function isInputValidated(input, min = 0, max = 40) {
-    // const val = input.value;
-    // if(val === "") {
-    //     notValidError(input.id,'This field is required');
-    //     return false;
-    // }
-    // if(val.length < min) {
-    //     notValidError(input.id,`must contain atleast ${min} characters`);
-    //     return false;
-    // }
-    // if(val.length > max) {
-    //     notValidError(input.id,`c'mon man really`);
-    //     return false;
-    // }
-    // if(input.id === 'email'){
-    //     result = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val)
-    //     if(!result){
-    //         notValidError(input,`Invalid email`);
-    //         return false;
-    //     }
-    // }
+    const val = input.value;
+    if(val === "") {
+        notValidError(input.id,'This field is required');
+        return false;
+    }
+    if(val.length < min) {
+        notValidError(input.id,`must contain atleast ${min} characters`);
+        return false;
+    }
+    if(val.length > max) {
+        notValidError(input.id,`c'mon man really`);
+        return false;
+    }
+    if(input.id === 'email'){
+        result = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val)
+        if(!result){
+            notValidError(input,`Invalid email`);
+            return false;
+        }
+    }
     return true;
 }
 

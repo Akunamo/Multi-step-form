@@ -36,19 +36,19 @@
 @font-face {
     font-family: ubuntu-b;
     src: url('./assets/fonts/Ubuntu-Bold.ttf');
-    font-display: swap
+    font-display: swap;
 }
 
 @font-face {
     font-family: ubuntu-m;
     src: url('./assets/fonts/Ubuntu-Medium.ttf');
-    font-display: swap
+    font-display: swap;
 }
 
 @font-face {
     font-family: ubuntu-r;
     src: url('./assets/fonts/Ubuntu-Regular.ttf');
-    font-display: swap
+    font-display: swap;
 }
 
 body,
@@ -433,7 +433,7 @@ input#yearly {
 }
 
 .total {padding: 1.5rem;}
-.total span {
+.total p:last-child {
     color: var(--Purplish-blue);
     font-weight: 700;
     font-size: 1.2rem;
@@ -491,7 +491,7 @@ input#yearly {
         
         margin-inline: 0;
         padding: 2.3rem 2rem;
-        background-image: url('/assets/images/bg-sidebar-desktop.svg');
+        background-image: url('./assets/images/bg-sidebar-desktop.svg');
         background-size: cover;
         background-repeat: no-repeat;
     }
