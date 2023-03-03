@@ -36,16 +36,19 @@
 @font-face {
     font-family: ubuntu-b;
     src: url('./assets/fonts/Ubuntu-Bold.ttf');
+    font-display: swap
 }
 
 @font-face {
     font-family: ubuntu-m;
     src: url('./assets/fonts/Ubuntu-Medium.ttf');
+    font-display: swap
 }
 
 @font-face {
     font-family: ubuntu-r;
     src: url('./assets/fonts/Ubuntu-Regular.ttf');
+    font-display: swap
 }
 
 body,
@@ -80,6 +83,15 @@ label {
     border-width: 0;
 }
 
+.none {display: none !important;}
+.yearly {display: none;}
+
+/* ----------- ------------- ------------ */
+/* ----------- ------------- ------------ */
+/* ----------- Global Styles ------------ */
+/* ----------- ------------- ------------ */
+/* ----------- ------------- ------------ */
+
 body {
     font-family: ubuntu-r;
     line-height: 1.5;
@@ -107,12 +119,40 @@ main {
 }
 
 
+form,
+section:not(.steps) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 form input {
     padding: .5em 1em;
     border: 1px solid var(--Light-gray);
     border-radius: .3rem;
     margin-top: .3em;
 }
+
+.container {
+    width: min(90%, 450px);
+    padding: 1.3rem 1.3rem 2rem;
+    margin-bottom: 1rem;
+    background-color: var(--White);
+    border-radius: .8em;
+}
+
+.container>p {
+    max-width: 35ch;
+}
+
+.container-buttons {
+    display: flex;
+    width: 100%;
+    border-radius: 0;
+    margin-block: auto 0;
+    padding: 1.3rem;
+}
+
 
 /* -------------- -------------- ------------ */
 /* -------------- Step Indicator ------------ */
@@ -161,37 +201,6 @@ form input {
     color: var(--Marine-blue);
 }
 
-/* ----------- ------------------ ------------ */
-/* ----------- sections and forms ------------ */
-/* ----------- ------------------ ------------ */
-
-form,
-section:not(.steps) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.container {
-    border-radius: .5em;
-    width: min(90%, 450px);
-    padding: 1.3rem 1.3rem 2rem;
-    background-color: var(--White);
-}
-
-.container>p {
-    max-width: 35ch;
-}
-
-.container-buttons {
-    display: flex;
-    width: 100%;
-    border-radius: 0;
-    margin-top: auto;
-    padding: 1.3rem;
-}
-
 /* --------- ---------------- ----------  */
 /* --------- Avilable Options ----------  */
 /* --------- ---------------- ----------  */
@@ -199,12 +208,11 @@ section:not(.steps) {
 .options-wrapper {
     display: grid;
     gap: 1rem;
-    margin-block: 2.5rem;
+    margin-block: 2rem;
 }
 
 .option {
     display: grid;
-    gap: .5rem;
     /* flex-direction: row-reverse; */
     /* Woaw SO if flex is reverse the flex-start and flex-end also get reversed */
     /* justify-content: start; */
@@ -219,63 +227,12 @@ section:not(.steps) {
     display: flex;
     flex-direction: column;
 }
-/* --------- User Info ------------- */
 
-.user-info label {color: var(--Marine-blue);}
+:is(.add-ons,.plans,.plan-type) label {cursor: pointer;}
 
-/* ----------- Plans --------------- */
-
-.plans .option {
-    grid-template-columns: 2rem 1fr;
-    align-items: center;
-    gap: 0;
-    padding: 1rem;
-    border: 1px solid var(--Light-gray);
-    border-radius: .4rem;
-}
-
-/* ---------- Add Ons -------------- */
-
-.add-ons {
-    margin-bottom: 0;
-}
-
-.add-ons .option {
-    gap: 0;
-}
-
-.add-ons .option>* {
-    grid-area: 1 / 1 / 3 / 2;
-}
-
-.add-ons div {
-    display: grid;
-    padding: 1rem 1rem 1rem 4rem;
-    border: 1px solid var(--Light-gray);
-    border-radius: .4rem;
-}
-
-.add-ons input {
-    width: 1rem;
-    margin-left: 1.7rem;
-    aspect-ratio: 1;
-    justify-self: start;
-    align-self: center;
-}
-
-@media (min-width:45rem) {
-    .plans {
-        grid-auto-flow: column;
-    }
-
-    .plans .option {
-        grid-template-columns: auto;
-        grid-auto-flow: row;
-        gap: 2rem;
-        padding: 1rem;
-        border: 1px solid var(--Light-gray);
-        border-radius: .4rem;
-    }
+.error {
+    color: red;
+    font-weight: 500;
 }
 
 
@@ -303,61 +260,197 @@ section:not(.steps) {
     background-color: var(--Marine-blue);
 }
 
-.none {
-    display: none !important;
+/* ----------------------------------------- */
+/* --------- User Info Section ------------- */
+/* ----------------------------------------- */
+
+.user-info label {
+    justify-content: space-between;
+    flex-direction: row;
 }
 
-.plan-type input {
-    border: none;
-    position: relative;
-    appearance: none;
-    margin: 0;
+/* ----------- ------------- --------------- */
+/* ----------- ------------- --------------- */
+/* ----------- Plans Section --------------- */
+/* ----------- ------------- --------------- */
+/* ----------- ------------- --------------- */
+
+.plans input:checked + label {
+    border-color: var(--Purplish-blue);
 }
 
-.plan-type input#monthly::after,
-input#yearly::after
-
-/* .toggle-plan-type :is(input#monthly::after,input#yearly::after) */
-    {
-    content: '';
-    background-color: rebeccapurple;
-    position: absolute;
-    width: 1.6rem;
+.plans .option {
+    grid-template-columns: 2rem 1fr;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--Light-gray);
+    border-radius: .4rem;
 }
 
-input#monthly::after {
-    inset: 0 -5px 0 auto;
-    border-radius: 50% 0 0 50%;
+.plans .option > img {
+    grid-area: 1 / 1 / 3 / 2;
 }
 
-input#yearly::after {
-    inset: 0 0 0 -5px;
-    border-radius: 0 50% 50% 0;
+.plans span:last-of-type {
+    font-size: .7rem;
 }
 
-/* ------------------------------------ */
-/* type changer ---------------------- */
+@media (min-width:45rem) {
+    .plans {
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+    }
+
+    .plans .option {
+        grid-template-columns: auto;
+        grid-auto-flow: row;
+        padding: 1rem;
+        border: 1px solid var(--Light-gray);
+        border-radius: .4rem;
+    }
+
+    .plans img {
+        grid-area: auto;
+        margin-bottom: clamp(1rem, 2vw, 2rem);
+    }
+}
+
+/* ---------------------------------------- */
+/* ---------- Toggle Plan type ---------------------- */
 /* ------------------------------------ */
 
 .plan-type {
+    position: relative;
     background-color: var(--Magnolia);
     padding: .7em;
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
+    align-items: center;
 }
 
-.plan-type :last-child {
-    grid-column: 3;
+label[for="monthly"]::after{
+    content: '';
+    inset: 50% auto auto calc(50% + 1px);
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    width: .8rem;
+    background-color: var(--White);
+    translate: 55% -50%;
 }
+
+input#monthly:checked + label::after {
+    translate: -55% -50%;
+}
+.plan-type input {
+    border: none;
+    appearance: none;
+    background-color: rebeccapurple;
+    background-color: var(--Marine-blue);
+    width: 1.4rem;
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+}
+
+input#monthly {
+    grid-column: 2;
+    margin-inline: 1rem 0;
+    border-radius: 50% 0 0 50%;
+}
+
+input#yearly {
+    grid-column: 3;
+    margin-inline: 0 1rem;
+    border-radius: 0 50% 50% 0;
+}
+
+/* ---------- ------- -------------- */
+/* ---------- Add Ons Section-------------- */
+/* ---------- ------- -------------- */
+
+.add-ons {margin-bottom: 0;}
+.add-ons .option>* {grid-area: 1 / 1 / 3 / 2;}
+
+.label-text {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr min-content;
+    padding: 1rem 1rem 1rem 4rem;
+    border: 1px solid var(--Light-gray);
+    border-radius: .4rem;
+}
+
+.label-text :nth-child(2) {line-height: 1.2;}
+.label-text :last-child {
+    grid-area:  1 / 2 / 3 / 3;
+}
+
+[data-plan],
+[data-planType] {
+    text-transform: capitalize;
+}
+
+.add-ons input {
+    width: 1rem;
+    margin-left: 1.7rem;
+    aspect-ratio: 1;
+    justify-self: start;
+    align-self: center;
+}
+
+.final-result.options-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1.5rem;
+    border-radius: .8rem;
+    margin-bottom: 0;
+    background-color: var(--Magnolia);
+}
+
+.purchase {
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase :last-child {color: var(--Marine-blue);}
+
+.purchase-plan {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    font-weight: 600;
+    color: var(--Marine-blue);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--Cool-gray);
+}
+.change {
+    font-weight: 400;
+    font-size: .8em;
+    color: var(--Cool-gray);
+}
+
+.total {padding: 1.5rem;}
+.total span {
+    color: var(--Purplish-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+
 
 .success {
+    display: flex;
+    flex-direction: column;
     padding-block: 3rem;
     text-align: center;
+    align-items: center;
 }
 
 /* --------- ------ ----------- */
-/* --------- Slider ----------- */
+/* --------- Global + Mix ----------- */
 /* --------- ------ ----------- */
 
 @media (min-width:45rem) {
@@ -374,7 +467,7 @@ input#yearly::after {
         padding: 1rem;
         border-radius: .8rem;
         width: min(60rem, 90%);
-        height: min(50rem,80%);
+        min-height: min(37rem,80%);
         background: none;
         background-color: var(--White);
     }
@@ -383,10 +476,12 @@ input#yearly::after {
         width: min(450px, 90%);
         padding: 0;
     }
+    .container>p {max-width: 100%;}
+    .options-wrapper {margin-block: clamp(1rem,.5rem + 2vw, 2rem);}
 
     form,
     section:not(.steps) {
-        padding-top: 2rem;
+        padding-top: clamp(.5rem, 2vw, 2rem);
     }
 
     .steps {
@@ -412,14 +507,4 @@ input#yearly::after {
         column-gap: 1rem;
         align-items: center;
     }
-
-    .selection-wrapper {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: 1fr;
-        justify-content: space-between;
-        margin-block: 2rem;
-    }
-
-    .container>p {max-width: 100%;}
 }

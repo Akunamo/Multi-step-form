@@ -36,23 +36,23 @@
         <p>Summary</p>
       </div>
     </section>
-    <form action="">
+    <form class="user-info-section" action="">
       <div class="flow container">
 
         <h2>Personal info</h2>
         <p>Please provide your name, email address, and phone number.</p>
         <div class="options-wrapper user-info">
           <div class="option">
-            <label for="name">Name</label>
-            <input id="name" type="text" placeholder="e.g. Stephen Vikram">
+            <label for="name"><span>Name</span><span class="name error"></span></label>
+            <input id="name" type="text" required placeholder="e.g. Stephen Vikram">
           </div>
           <div class="option">
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="e.g. A_Viral@Gmail.com">
+            <label for="email"><span>Email</span><span class="email error"></span></label>
+            <input id="email" type="email" required placeholder="e.g. A_Viral@Gmail.com">
           </div>
           <div class="option">
-            <label for="phone">Phone</label>
-            <input id="email" type="email" placeholder="e.g. +91 234 567 890">
+            <label for="phone"><span>Phone</span><span class="phone error"></span></label>
+            <input id="phone" type="number" required placeholder="e.g. +91 234 567 890" minlength="10" maxlength="10">
           </div>
         </div>
       </div>
@@ -61,40 +61,47 @@
       </div>
     </form>
     <!-- PLANS SECTION -->
-    <form class="none" action="">
+    <form class="none plans-section" action="">
       <div class="container">
         <h2>Select your plan</h2>
         <p>You have the option of monthly or yearly billing.</p>
 
         <div class="plans options-wrapper">
-            <label class="option" for="arcade">
-              <img src="/assets/images/icon-arcade.svg" width="40" height="40" alt="">
-              <span>Arcade</span>
-              <span>$9/mo</span>
-            </label>
-            <input class="sr-only" id="arcade" type="radio" name="plan">
-
-            <label class="option" for="advanced">
-              <img src="/assets/images/icon-advanced.svg" width="40" height="40" alt="">
-              <span>Advanced</span>
-              <span>$12/mo</span>
-            </label>
-            <input class="sr-only" id="advanced" type="radio" name="plan">
-
-            <label class="option" for="Pro">
-              <img src="/assets/images/icon-pro.svg" width="40" height="40" alt="">
-              <span>Pro</span>
-              <span>$15/mo</span>
-            </label>
-            <input class="sr-only" id="pro" type="radio" name="plan">
+          <input class="sr-only" id="arcade" type="radio" name="plan">
+          <label class="option" for="arcade">
+            <img src="/assets/images/icon-arcade.svg" width="40" height="40" alt="">
+            <span>Arcade</span>
+            <span class="monthly" data-val="9">$9/mo</span>
+            <span class="yearly" data-val="90">$90/yr</span>
+            <span class="yearly">2 months free</span>
+          </label>
+          
+          <input class="sr-only" id="advanced" type="radio" name="plan">
+          <label class="option" for="advanced">
+            <img src="/assets/images/icon-advanced.svg" width="40" height="40" alt="">
+            <span>Advanced</span>
+            <span class="monthly" data-val="12">$12/mo</span>
+            <span class="yearly" data-val="120">$120/yr</span>
+            <span class="yearly">2 months free</span>
+          </label>
+          
+          <input class="sr-only" id="pro" type="radio" name="plan">
+          <label class="option" for="pro">
+            <img src="/assets/images/icon-pro.svg" width="40" height="40" alt="">
+            <span>Pro</span>
+            <span class="monthly" data-val="15">$15/mo</span>
+            <span class="yearly" data-val="150">$150/yr</span>
+            <span class="yearly">2 months free</span>
+          </label>
         </div>
-
+        
         <div class="plan-type">
+          <input id="monthly" type="radio" name="type" checked>
           <label for="monthly">Monthly</label>
-          <input id="monthly" type="radio" name="type">
-          <label for="yearly">Yearly</label>
           <input id="yearly" type="radio" name="type">
+          <label for="yearly">Yearly</label>
         </div>
+        <span class="notSelected error"></span>
       </div>
       <div class="container container-buttons">
         <button class="back" type="button">Go back</button>
@@ -103,7 +110,7 @@
 
     </form>
     <!-- ADD ONES SECTION -->
-    <form class="none" action="">
+    <form class="none add-ons-section" action="">
       <div class="flow container">
         <h2>Pick add-ons</h2>
         <p>Add-ons help enhance your gaming experience.</p>
@@ -111,25 +118,37 @@
         <div class="add-ons options-wrapper">
           <label class="option" for="online_service">
             <input id="online_service" type="checkbox" name="add-on">
-            <div>
-              <span>Online service</span>
+            <div class="label-text">
+              <span data-addOn>Online service</span>
               <span>Access to multiplayer games</span>
+              <span>
+                <span class="monthly" data-val="1">$1/mo</span>
+                <span class="yearly" data-val="10">$10/yr</span>
+              </span>
             </div>
           </label>
 
           <label class="option" for="large_storage">
             <input id="large_storage" type="checkbox" name="add-on">
-            <div>
-              <span>Larger storage</span>
+            <div class="label-text">
+              <span data-addOn>Larger storage</span>
               <span>Extra 1TB of cloud save</span>
+              <span>
+                <span class="monthly" data-val="2">$2/mo</span>
+                <span class="yearly" data-val="20">$20/yr</span>
+              </span>
             </div>
           </label>
 
           <label class="option" for="custom_profile">
             <input id="custom_profile" type="checkbox" name="add-on">
-            <div>
-              <span>Customizable Profile</span>
+            <div class="label-text">
+              <span data-addOn>Customizable Profile</span>
               <span>Custom theme on your profile</span>
+              <span>
+                <span class="monthly" data-val="2">$2/mo</span>
+                <span class="yearly" data-val="20">$20/yr</span>
+              </span>
             </div>
           </label>
         </div>
@@ -142,33 +161,41 @@
       </div>
     </form>
     <!-- FINALIZATION -->
-    <section class="none verify">
+    <section class="none finalization">
       <div class="container">
 
         <h2>Finishing up</h2>
         <p>Double-check everything looks OK before confirming.</p>
-        <div>
-          <p class="purchase purchase-plan">Acrade (Monthly) <a>Change</a><span data-plan>arcade</span></p>
-          <p class="purchase">Online service<span>+$1/mo</span></p>
-          <p class="purchase">Larger storage<span>+$2/mo</span></p>
+        <div class="final-result options-wrapper">
+
+          <div class="purchase purchase-plan">
+            <p><span data-plan>Acrade</span> (<span data-planType>Monthly</span>)</p>
+            <!-- <a href=""></a> -->
+            <p>$<span data-planCost>90</span><span class="monthly">/mo</span><span class="yearly">/yr</span></p>
+            <a href="#" class="change">Change</a>
+          </div>
         </div>
-        <p class="total">
-          <span class="type"></span>
-          <span class="total-price"></span>
-        </p>
+
+        <div class="total purchase">
+          <p class="type">Total(per year)</p>
+          <p class="total-price">$120/yr</p>
+        </div>
       </div>
+
       <div class="container container-buttons">
         <button class="back">Go back</button>
         <button class="next">Next Step</button>
       </div>
     </section>
-    <!-- Dynamically add subscription and add-on selections here -->
-    <section class="success container none">
-      <img src="/assets/images/icon-thank-you.svg" alt="">
-      <h2>Thank you!</h2>
-      <p>Thanks for confirming your subscription! We hope youn
-        using our platform. If you ever need support, please feel free
-        to email us at support@loremgaming.com.</p>
+
+    <section class="none Thanks-section">
+      <div class="success container">
+        <img src="/assets/images/icon-thank-you.svg" alt="">
+        <h2>Thank you!</h2>
+        <p>Thanks for confirming your subscription! We hope youn
+          using our platform. If you ever need support, please feel free
+          to email us at support@loremgaming.com.</p>
+        </div>
     </section>
   </main>
 
